@@ -80,3 +80,16 @@
 }
 @media(prefers-reduced-motion:reduce){.track-card{transition:none}.track-card:hover{transform:none}}
 @media print{.player-video-frame,.player-links,.top-music-link{display:none}.music-gift-section{padding:30px 0}.playlist-grid{grid-template-columns:1fr}}
+
+/* V6.4: music cover until a real listening gesture, no black YouTube error at first visit */
+.player-start-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:9px;padding:clamp(18px,3vw,38px);background:radial-gradient(circle at 76% 42%,rgba(194,126,85,.32),transparent 41%),linear-gradient(145deg,#1b3039,#0f1e27);overflow:hidden}
+.player-start-cover::before{content:"";position:absolute;right:clamp(12px,6vw,65px);top:50%;width:clamp(85px,12vw,170px);aspect-ratio:1;border:1px solid rgba(225,178,135,.16);border-radius:50%;transform:translateY(-50%);box-shadow:0 0 0 23px rgba(230,189,138,.045),0 0 0 48px rgba(230,189,138,.024);pointer-events:none}
+.player-start-cover>*{position:relative;z-index:1}
+.cover-kicker{font:600 9px/1.5 var(--sans);letter-spacing:.16em;color:#e5b88b}
+.cover-track{font:400 clamp(30px,4vw,53px)/1.15 var(--serif);letter-spacing:-.045em;color:#fff4e3}
+.cover-artist{font:400 12px/1.5 var(--sans);color:#dec8b4}
+.cover-play{margin-top:13px;padding:11px 16px;border:1px solid #e4bc93;background:#e4bc93;color:#21313b;cursor:pointer;font-size:13px;font-weight:600;min-height:44px;transition:background .2s,transform .2s}
+.cover-play:hover,.cover-play:focus-visible{background:#f8d6ad;transform:translateY(-1px)}
+.player-video-frame [hidden]{display:none!important}
+@media(max-width:600px){.player-start-cover{padding:17px}.cover-track{font-size:35px}.cover-kicker{font-size:8px}.cover-play{padding:9px 13px}}
+@media(prefers-reduced-motion:reduce){.cover-play{transition:none}.cover-play:hover{transform:none}}
