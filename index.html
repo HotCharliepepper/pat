@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#15252e" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="description" content="재원이형 생일 축하해. 함께 넓혀온 세상, 다시 건넨 안부, 앞으로 두 아빠로 살아갈 시간을 담은 편지." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="재원이형, 우리 다음 문을 열자" />
+  <meta property="og:description" content="함께 나눈 6–7년, 세 곡의 음악, 그리고 앞으로 열 문. 생일 축하해." />
+  <meta property="og:locale" content="ko_KR" />
+  <!-- Before sharing, replace this with an absolute HTTPS URL on the deployed site. -->
+  <meta property="og:image" content="/assets/og-patrick.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image" content="./assets/og-patrick.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>재원이형, 다음 문을 열자 — from Charlie</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#f5f1e9; --paper:#fffdf7; --ink:#1a2a30; --ink-soft:#576367;
+      --dark:#15252e; --dark-2:#213541; --terracotta:#b66b4e; --gold:#dfb98a;
+      --rule:rgba(26,42,48,.16); --serif:'Gowun Batang','Nanum Myeongjo','Batang',serif;
+      --sans:'DM Sans','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);word-break:keep-all;-webkit-font-smoothing:antialiased}
+    body::selection{background:var(--gold);color:var(--ink)}
+    a{color:inherit;text-underline-offset:5px}
+    button{font:inherit}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip{position:fixed;top:-100px;left:16px;z-index:30;background:white;color:black;padding:12px}
+    .skip:focus{top:16px}
+    .page-meter{position:fixed;z-index:10;top:0;left:0;width:100%;height:3px;background:transparent;pointer-events:none}
+    .page-meter span{display:block;height:100%;width:0;background:var(--terracotta);transition:width .12s linear}
+    .wrap{width:min(1160px,calc(100% - 96px));margin-inline:auto}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:31px 0;position:relative;z-index:3}
+    .wordmark{font-size:12px;font-weight:700;letter-spacing:.16em;white-space:nowrap}
+    .topdate{font-size:11px;letter-spacing:.15em;color:#d9d3c9;text-transform:uppercase}
+    .eyebrow{display:flex;align-items:center;gap:11px;font-size:11px;letter-spacing:.18em;font-weight:700;text-transform:uppercase}
+    .eyebrow::before{content:"";width:20px;height:1px;background:currentColor;opacity:.7}
+    .hero{background:var(--dark);color:var(--paper);min-height:100vh;min-height:100svh;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:-30% -40% auto auto;width:75vw;height:75vw;border:1px solid rgba(255,255,255,.07);border-radius:50%;pointer-events:none}
+    .hero::after{content:"";position:absolute;bottom:-34vw;left:-26vw;width:72vw;height:72vw;border:1px solid rgba(255,255,255,.06);border-radius:50%;pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(280px,.82fr);gap:clamp(30px,6vw,110px);align-items:center;min-height:calc(100svh - 93px);padding:60px 0 94px}
+    .hero-copy{position:relative;z-index:2}
+    .hero .eyebrow{color:var(--gold)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-family:var(--serif);font-size:clamp(49px,5.4vw,86px);letter-spacing:-.067em;line-height:1.27;margin:28px 0 32px;font-weight:400}
+    h1 em{color:var(--gold);font-style:normal}
+    .hero-intro{font-family:var(--serif);font-size:clamp(15px,1.4vw,19px);line-height:2.03;color:#dcdad4;max-width:490px;margin-bottom:35px}
+    .scroll-cta{display:inline-flex;align-items:center;gap:28px;border:1px solid rgba(255,255,255,.45);border-radius:1px;color:white;text-decoration:none;min-width:218px;justify-content:space-between;padding:15px 17px;font-size:12px;letter-spacing:.04em;transition:background .25s,transform .25s}
+    .scroll-cta:hover,.scroll-cta:focus-visible{background:rgba(255,255,255,.11);transform:translateY(-3px)}
+    .arrow{font-family:var(--sans);font-size:19px;font-weight:400;line-height:1}
+    .micro{font-size:11px;letter-spacing:.09em;color:#b3ada2;margin:24px 0 0}
+    .hero-art{display:flex;justify-content:center;align-items:center;position:relative;min-height:460px}
+    .orbit{position:absolute;inset:50% auto auto 50%;width:min(42vw,520px);height:min(42vw,520px);transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.08);border-radius:50%;pointer-events:none}
+    .orbit::after{content:"";position:absolute;inset:36px;border:1px solid rgba(255,255,255,.06);border-radius:50%}
+    .door-control{position:relative;width:218px;height:337px;padding:0;border:0;background:transparent;cursor:pointer;perspective:1000px;color:var(--paper);outline-offset:10px;filter:drop-shadow(18px 20px 24px rgba(0,0,0,.2))}
+    .door-frame{position:absolute;inset:0;border:1px solid rgba(223,185,138,.65);border-radius:115px 115px 1px 1px;background:linear-gradient(155deg,#3b4e50 0%,#253a41 48%,#121f27 100%);box-shadow:0 0 0 10px rgba(223,185,138,.045),inset 0 0 0 12px rgba(0,0,0,.12);overflow:hidden}
+    .door-light{position:absolute;inset:0;background:radial-gradient(circle at 63% 35%,#f4d3a8 0%,#c18b6a 25%,#995a45 56%,#2b343a 100%);opacity:.9}
+    .door-light span{position:absolute;top:29%;left:12%;width:80%;font-family:var(--serif);font-size:23px;line-height:1.6;color:#fff6de;text-align:center;text-shadow:0 1px 12px rgba(21,37,46,.28)}
+    .door-leaf{position:absolute;inset:3px 3px 3px 3px;border-radius:112px 112px 0 0;transform-origin:left center;transform:rotateY(0);transform-style:preserve-3d;transition:transform 1.25s cubic-bezier(.2,.74,.12,1),box-shadow 1s;
+      background:linear-gradient(110deg,#a46e57 0%,#ca9671 42%,#96624a 100%);box-shadow:inset 13px 0 14px rgba(67,35,26,.19),inset -12px 0 20px rgba(30,35,34,.19),4px 0 15px rgba(0,0,0,.3)}
+    .door-leaf::before{content:"";position:absolute;inset:27px 24px;border:1px solid rgba(255,238,205,.37);border-radius:92px 92px 0 0}
+    .door-leaf::after{content:"";position:absolute;right:21px;top:53%;width:9px;height:9px;border-radius:50%;background:#f2d5a5;box-shadow:0 0 0 3px rgba(37,28,24,.17)}
+    .door-control:hover .door-leaf{transform:rotateY(-18deg)}
+    .door-control[aria-expanded="true"] .door-leaf,.door-control[aria-expanded="true"]:hover .door-leaf{transform:rotateY(-79deg);box-shadow:12px 8px 19px rgba(0,0,0,.35)}
+    .art-caption{position:absolute;bottom:-56px;left:50%;transform:translateX(-50%);min-width:245px;text-align:center;font-size:11px;letter-spacing:.19em;color:#d4c4ad;text-transform:uppercase}
+    .section{position:relative;padding:clamp(100px,13vw,190px) 0}
+    .section-index{display:block;font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.15em;color:var(--terracotta);margin-bottom:28px}
+    .section h2{font-family:var(--serif);font-size:clamp(34px,4vw,61px);font-weight:400;line-height:1.46;letter-spacing:-.057em;margin-bottom:25px}
+    .section p{font-size:clamp(14px,1.25vw,17px);line-height:2.15;color:var(--ink-soft)}
+    .split{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(32px,9vw,156px)}
+    .text-area{max-width:530px}
+    .little-words{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 0}
+    .little-words span{border:1px solid var(--rule);padding:10px 13px;border-radius:30px;font-size:11px;letter-spacing:.08em;color:var(--ink-soft)}
+    .record-stage{display:grid;place-items:center;aspect-ratio:1;border-radius:50%;border:1px solid var(--rule);position:relative;max-width:470px;width:100%;margin:auto}
+    .record-stage::before,.record-stage::after{content:"";position:absolute;inset:9%;border:1px solid var(--rule);border-radius:50%}
+    .record-stage::after{inset:18%}
+    .vinyl{width:62%;aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle at center,#20333d 0px,#20333d 4px,#263a45 5px,#263a45 6px);border:9px solid #192b33;box-shadow:16px 22px 38px rgba(21,37,46,.14);display:grid;place-items:center;transform:rotate(-15deg);animation:vinylturn 35s linear infinite}
+    .vinyl-label{width:37%;aspect-ratio:1;border-radius:50%;background:#d5aa86;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#24333a;font-size:11px;line-height:1.7;letter-spacing:.05em;position:relative}
+    .vinyl-label::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:5px;height:5px;background:#20333d;border-radius:50%}
+    .side-note{font-family:var(--serif);font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-align:center;margin-top:16px}
+    @keyframes vinylturn{to{transform:rotate(345deg)}}
+    .dark-panel{background:var(--dark);color:var(--paper)}
+    .dark-panel .section-index{color:var(--gold)}
+    .dark-panel p{color:#c0c8c7}
+    .line-timeline{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:56px;border-top:1px solid rgba(255,255,255,.23)}
+    .timeline-item{position:relative;padding:24px 25px 0 0}
+    .timeline-item::before{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:var(--gold);top:-5px;left:0}
+    .time-meta{display:block;font-size:10px;letter-spacing:.18em;color:var(--gold);margin-bottom:10px}
+    .time-text{font-family:var(--serif);font-size:clamp(15px,1.6vw,21px);line-height:1.8}
+    .quote-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,100px);margin-top:65px}
+    .quote-block{border-top:1px solid var(--rule);padding-top:29px}
+    .quote-block .symbol{font-size:38px;font-family:var(--serif);color:var(--terracotta);line-height:1.1;margin-bottom:18px}
+    .quote-block h3{font-family:var(--serif);font-size:clamp(26px,2.5vw,36px);font-weight:400;line-height:1.6;letter-spacing:-.035em;margin-bottom:20px}
+    .quote-block p{font-size:14px;line-height:2.15}
+    .center-line{text-align:center;max-width:820px;margin:auto}
+    .center-line .section-index{margin-bottom:26px}
+    .nextgen{padding-bottom:clamp(90px,10vw,145px)}
+    .nextgen-art{display:grid;grid-template-columns:1fr 140px 1fr;align-items:center;gap:20px;max-width:690px;margin:66px auto 0}
+    .nextgen-circle{width:min(100%,210px);aspect-ratio:1;border:1px solid rgba(26,42,48,.22);border-radius:50%;display:grid;place-items:center;justify-self:center;background:radial-gradient(circle,rgba(223,185,138,.19),transparent 65%);text-align:center}
+    .nextgen-circle .person{font-family:var(--serif);font-size:clamp(24px,3vw,38px);letter-spacing:-.07em}
+    .nextgen-circle .kid{display:block;color:var(--terracotta);font-size:12px;letter-spacing:.14em;margin-top:12px}
+    .connecting{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--terracotta)}
+    .connecting::before,.connecting::after{content:"";height:1px;flex:1;background:var(--terracotta);opacity:.5}
+    .connecting span{font-size:14px}
+    .letter-section{background:#eae3d8;padding:clamp(80px,10vw,140px) 0}
+    .letter-shell{max-width:860px;margin:auto;position:relative}
+    .letter-shell::before{content:"";position:absolute;inset:-22px;border:1px solid rgba(26,42,48,.12);pointer-events:none}
+    details.letter{background:var(--paper);box-shadow:0 30px 80px rgba(39,31,20,.08);border:1px solid rgba(26,42,48,.09)}
+    details.letter summary{list-style:none;cursor:pointer;padding:clamp(34px,6vw,74px);outline-offset:5px}
+    details.letter summary::-webkit-details-marker{display:none}
+    .letter-meta{font-size:10px;letter-spacing:.2em;color:var(--terracotta);font-weight:700}
+    .letter-summary-title{font-family:var(--serif);font-size:clamp(30px,4vw,54px);line-height:1.42;letter-spacing:-.05em;margin:20px 0}
+    .letter-summary-desc{color:var(--ink-soft);font-size:14px;line-height:2}
+    .letter-open-action{display:inline-flex;gap:15px;align-items:center;border-bottom:1px solid var(--terracotta);padding:10px 0;font-size:13px;margin-top:16px}
+    .letter-open-action .plus{font-family:var(--sans);font-size:23px;font-weight:400;color:var(--terracotta);line-height:1}
+    details[open] .letter-open-action .plus{transform:rotate(45deg)}
+    .letter-body{padding:0 clamp(34px,6vw,74px) clamp(40px,6vw,74px);animation:fadeup .4s ease both}
+    .letter-body::before{content:"";display:block;border-top:1px solid var(--rule);margin-bottom:38px}
+    .letter-body p{font-family:var(--serif);font-size:clamp(15px,1.55vw,19px);line-height:2.3;color:#303c40;margin:0 0 28px;white-space:pre-line}
+    .letter-body .signature{color:var(--terracotta);font-size:17px;margin-top:43px}
+    .letter-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:34px}
+    .copy-button{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:13px 18px;font-size:12px;cursor:pointer;transition:background .2s,color .2s}
+    .copy-button:hover,.copy-button:focus-visible{background:var(--ink);color:white}
+    .copy-status{font-size:12px;color:var(--ink-soft)}
+    @keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .finale{background:var(--dark);color:var(--paper);padding:clamp(95px,12vw,185px) 0 40px;text-align:center;position:relative;overflow:hidden}
+    .finale::before{content:"";position:absolute;width:660px;height:660px;left:50%;top:17%;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.08);border-radius:50%}
+    .finale .eyebrow{justify-content:center;color:var(--gold)}
+    .finale h2{font-family:var(--serif);font-size:clamp(40px,6vw,83px);font-weight:400;line-height:1.35;letter-spacing:-.06em;margin:30px auto 36px;position:relative}
+    .finale h2 em{font-style:normal;color:var(--gold)}
+    .finale p{font-family:var(--serif);font-size:clamp(15px,1.5vw,21px);line-height:2.1;color:#d6d6d0}
+    .endnote{margin-top:clamp(100px,13vw,170px);display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid rgba(255,255,255,.18);padding-top:24px;font-size:10px;letter-spacing:.16em;color:#c9c3b8}
+    .scroll-appear{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}
+    .scroll-appear.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:800px){
+      .wrap{width:min(100% - 42px,630px)}
+      .topbar{padding:22px 0}
+      .topdate{font-size:10px;letter-spacing:.08em}
+      .wordmark{font-size:10px;letter-spacing:.07em}
+      .hero-grid{grid-template-columns:1fr;min-height:auto;padding:60px 0 120px;gap:25px}
+      h1{font-size:clamp(42px,10vw,68px);line-height:1.35;margin:25px 0}
+      .hero-intro{font-size:15px;margin-bottom:25px}
+      .hero-art{min-height:330px}
+      .door-control{width:156px;height:246px}
+      .orbit{width:300px;height:300px}
+      .art-caption{bottom:-35px;font-size:9px}
+      .split{grid-template-columns:1fr;gap:44px}
+      .split .art-side{grid-row:2}
+      .record-stage{max-width:320px}
+      .quote-layout{grid-template-columns:1fr;gap:46px}
+      .section{padding:85px 0}
+      .line-timeline{margin-top:45px}
+      .timeline-item{padding-right:10px}
+      .time-meta{font-size:9px}
+      .time-text{font-size:15px}
+      .nextgen-art{grid-template-columns:1fr 46px 1fr;gap:9px;margin-top:40px}
+      .nextgen-circle{width:100%;max-width:160px}
+      .nextgen-circle .person{font-size:23px}
+      .nextgen-circle .kid{font-size:10px}
+      .letter-shell::before{inset:-9px}
+      .endnote{font-size:9px;letter-spacing:.05em}
+    }
+    @media(max-width:370px){
+      .wrap{width:calc(100% - 34px)}
+      .wordmark{font-size:9px}
+      .topdate{font-size:9px}
+      .nextgen-circle .person{font-size:20px}
+      .timeline-item{padding-right:6px}
+      .time-text{font-size:13px}
+      .letter-summary-title{font-size:29px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+      .scroll-appear{opacity:1!important;transform:none!important}
+    }
+    @media print{
+      .hero{min-height:auto}.hero-grid{min-height:auto}.hero-art,.page-meter,.scroll-cta,.letter-open-action,.copy-button{display:none!important}
+      .hero,.dark-panel,.finale{background:#fff!important;color:#111!important}
+      .hero-intro,.dark-panel p,.finale p{color:#333!important}
+      .section,.letter-section,.finale{padding:35px 0}
+      .scroll-appear{opacity:1!important;transform:none!important}
+      details.letter:not([open]) .letter-body{display:block!important}
+      .letter-shell::before{display:none}
+      .nextgen-art{margin:20px auto}
+    }
+
+    /* MUSIC V4 — compact, user-controlled sound */
+    .music-toggle[hidden]{display:none!important}
+    .music-toggle{position:fixed;right:clamp(14px,3vw,32px);bottom:max(18px,env(safe-area-inset-bottom) + 12px);z-index:26;display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:10px 14px;background:rgba(21,37,46,.96);color:#fffdf7;border:1px solid rgba(223,185,138,.58);border-radius:100px;box-shadow:0 8px 24px rgba(5,15,20,.2);cursor:pointer;font-size:12px;letter-spacing:.02em;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .music-toggle:hover{background:#243b46}
+    .music-toggle:focus-visible{outline:3px solid #dfb98a;outline-offset:3px}
+    .music-symbol{width:22px;height:18px;display:flex;align-items:end;justify-content:space-around;gap:3px}
+    .music-symbol i{display:block;width:3px;height:5px;border-radius:2px;background:#dfb98a;transition:height .25s}
+    .music-toggle[aria-pressed="true"] .music-symbol i:nth-child(1){animation:music-pulse .9s ease-in-out infinite alternate}
+    .music-toggle[aria-pressed="true"] .music-symbol i:nth-child(2){animation:music-pulse 1.2s ease-in-out .15s infinite alternate}
+    .music-toggle[aria-pressed="true"] .music-symbol i:nth-child(3){animation:music-pulse .8s ease-in-out .2s infinite alternate}
+    @keyframes music-pulse{from{height:5px}to{height:18px}}
+    @media(prefers-reduced-motion:reduce){.music-toggle .music-symbol i{animation:none!important}}
+    @media print{.music-toggle{display:none!important}}
+
+    /* V5 CINEMATIC — Moving image is atmospheric, never the writing surface. */
+    .hint-mobile{display:none}
+    @media(max-width:800px){.hint-desktop{display:none}.hint-mobile{display:inline}}
+    .hero.cinematic{isolation:isolate;background:#101f28}
+    .hero-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:-2;pointer-events:none;filter:saturate(.86) contrast(1.07)}
+    .hero-film-wash{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(13,28,36,.97) 0%,rgba(13,28,36,.89) 28%,rgba(13,28,36,.50) 62%,rgba(13,28,36,.25) 100%),linear-gradient(0deg,rgba(13,28,36,.70),transparent 26%,transparent 72%,rgba(13,28,36,.32))}
+    .hero.cinematic::before,.hero.cinematic::after{z-index:0}
+    .hero.cinematic .wrap{position:relative;z-index:1}
+    .hero.cinematic h1,.hero.cinematic .hero-intro{text-shadow:0 5px 35px rgba(3,13,16,.30)}
+    .hero.cinematic .door-frame{background:linear-gradient(155deg,#3b4e50ef 0%,#253a41e8 48%,#121f27d9 100%)}
+    .hero.cinematic .hero-art:after{content:"";position:absolute;inset:13% 14%;pointer-events:none;z-index:-1;background:radial-gradient(ellipse,rgba(233,162,112,.09),transparent 64%);filter:blur(30px)}
+    .cinema-bridge{background:#23363e;color:#fffaf0;min-height:76vh;display:flex;align-items:center;position:relative;overflow:hidden}
+    .cinema-bridge::before{content:"";position:absolute;inset:-15%;background:radial-gradient(ellipse at 83% 70%,rgba(216,141,99,.34),transparent 43%),linear-gradient(160deg,#152630,#253b42 67%,#443833);opacity:.95}
+    .cinema-bridge::after{content:"";position:absolute;inset:8% 4%;border:1px solid rgba(255,255,255,.10);pointer-events:none}
+    .cinema-bridge-inner{position:relative;z-index:1;padding:120px 0 135px}
+    .bridge-meta{display:block;font-size:11px;letter-spacing:.22em;color:#e9c49c;margin:32px 0}
+    .bridge-heading{font:400 clamp(36px,5.2vw,76px)/1.51 var(--serif);letter-spacing:-.06em;margin:0;max-width:970px}
+    .bridge-heading em{font-style:normal;color:#edcb9f}
+    .bridge-note{font:400 clamp(13px,1.4vw,17px)/2 var(--serif);color:#d6d7d2;margin:28px 0 40px}
+    .cinema-bridge-line{height:1px;background:rgba(255,255,255,.2);width:min(740px,90%);overflow:hidden}
+    .cinema-bridge-line span{display:block;width:36%;height:100%;background:#f0cba5;transform:translateX(-105%)}
+    .cinema-bridge-line.bottom{opacity:.35;transform:scaleX(.8);transform-origin:left}
+    .motion-note{position:fixed;z-index:22;left:16px;bottom:16px;font-size:10px;color:#b4a998;pointer-events:none}
+    @media(max-width:800px){
+      .hero-film{object-position:65% center;filter:saturate(.72) brightness(.8)}
+      .hero-film-wash{background:linear-gradient(180deg,rgba(13,28,36,.92) 0%,rgba(13,28,36,.78) 33%,rgba(13,28,36,.4) 72%,rgba(13,28,36,.6) 100%),linear-gradient(90deg,rgba(13,28,36,.48),transparent)}
+      .cinema-bridge{min-height:70vh}.cinema-bridge-inner{padding:100px 0}
+      .bridge-heading{font-size:clamp(32px,8.7vw,52px)}
+      .bridge-meta{font-size:10px;letter-spacing:.12em}
+      .hero-grid{padding-top:39px;padding-bottom:58px;gap:12px}
+      .hero-intro{margin-bottom:19px}
+      .hero-art{min-height:270px}
+      .door-control{width:145px;height:227px}
+      .art-caption{bottom:-24px}
+      .micro{margin-top:15px}
+    }
+    @media(prefers-reduced-motion:reduce){.hero-film{display:none!important}.cinema-bridge-line span{transform:none!important}}
+    @media print{.hero-film,.hero-film-wash,.cinema-bridge{display:none!important}}
+  </style>
+  <link rel="stylesheet" href="playlist.css" />
+  <script src="playlist.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <div class="page-meter" aria-hidden="true"><span id="progress"></span></div>
+  <header class="hero cinematic" id="top">
+    <!-- Original abstract atmosphere loop. Replace with footage you have permission to publish. -->
+    <video id="heroFilm" class="hero-film" autoplay muted playsinline loop preload="metadata" poster="assets/atmosphere_poster.webp" aria-hidden="true" tabindex="-1">
+      <source src="assets/atmosphere.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-film-wash" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="topbar"><div class="wordmark">CHARLIE <span aria-hidden="true">/</span> PATRICK</div><div class="top-right"><a class="top-music-link" href="#soundtrack">세 곡의 음악 <span aria-hidden="true">↗</span></a><div class="topdate">NOV 02, 2026 · PRIVATE LETTER</div></div></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">NOVEMBER 02 · FOR A FRIEND</div>
+          <h1>우리 참,<br />멀리도 왔다.<br /><em>생일 축하해.</em></h1>
+          <p class="hero-intro">좋은 음악, 멀리 찾아간 맛있는 한 끼.<br />그리고 한동안 뜸했던 안부를 다시 나누기까지.<br />형 생일이라 우리가 지나온 장면을 좀 꺼내봤어.</p>
+          <a class="scroll-cta" href="#main"><span>우리의 이야기 읽기</span><span class="arrow" aria-hidden="true">↘</span></a>
+          <p class="micro"><span class="hint-desktop">형, 오른쪽 문도 한번 열어봐. ㅎㅎ</span><span class="hint-mobile">형, 아래 문도 한번 열어봐. ㅎㅎ</span></p>
+        </div>
+        <div class="hero-art">
+          <div class="orbit" aria-hidden="true"></div>
+          <button type="button" id="doorButton" class="door-control" aria-label="생일 축하 메시지의 문 열기" aria-expanded="false">
+            <span class="door-frame"><span class="door-light"><span>재원이형,<br />생일 축하해!</span></span></span>
+            <span class="door-leaf" aria-hidden="true"></span>
+          </button>
+          <div class="art-caption" id="doorHint">TAP TO OPEN THE NEXT DOOR</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="section" id="first-door" aria-labelledby="first-title">
+      <div class="wrap split">
+        <div class="text-area scroll-appear">
+          <span class="section-index">01 / THE FIRST DOOR</span>
+          <h2 id="first-title">처음엔 형이<br />내 세상을<br />넓혀줬지.</h2>
+          <p>형이 들려준 음악, 맛있는 걸 찾아 떠난 여행, 사람 사이에 선을 그어두는 태도. 그때 나는 그런 것들이 낯설면서도 재밌었어.</p>
+          <p>형이 뭘 가르치려 했던 건 아니야. 그냥 내가 모르던 세계가 있다는 걸 보여줬지. 그래서 나한테는 <em>Preacher</em> 같은 사람이었나 봐. ㅎㅎ</p>
+          <div class="little-words" aria-label="함께 나눴던 주제들"><span>MUSIC</span><span>FOOD & TRAVEL</span><span>BOUNDARIES</span></div>
+        </div>
+        <div class="art-side scroll-appear">
+          <div class="record-stage" aria-hidden="true"><div class="vinyl"><div class="vinyl-label">THE<br/>FIRST<br/>DOOR</div></div></div>
+          <p class="side-note">Some people change the way we listen.</p>
+        </div>
+      </div>
+    </section>
+    <section class="music-gift-section" id="soundtrack" aria-labelledby="soundtrack-title">
+      <div class="wrap">
+        <div class="music-gift-heading scroll-appear"><span class="section-index">01.5 / THREE SONGS FOR A FRIEND</span>
+        <h2 id="soundtrack-title">형, 이번엔<br /><em>내가 골라본</em> 세 곡.</h2>
+        <p>한때는 형이 내게 새로운 음악을 들려줬잖아.<br />오늘은 내가 형에게 세 곡을 남겨둘게.<br />편지 읽다가 들어도 좋고, 일할 때 켜놓아도 좋아.</p>
+        </div>
+        <div class="playlist-root" data-playlist-root>
+      <div class="playlist-grid">
+        <div class="playlist-trackside">
+          <p class="playlist-instruction">세 곡 모두 형이 마음대로 골라 들어. 음악이 마음에 들면 일할 때 틀어둬도 좋고.</p>
+          <div class="track-list" role="group" aria-label="재원이형에게 고른 세 곡">
+            <button class="track-card track-home" type="button" data-track-index="0" aria-pressed="true" aria-label="Home 선택">
+         <span class="track-no">01 / 03</span>
+         <span class="track-info"><span class="track-name">Home</span><span class="track-artist">Marsh</span><span class="track-desc">다시 안부를 나눈 여름부터, 각자의 가정이 생긴 지금까지.</span></span>
+         <span class="track-select-mark" aria-hidden="true">↗</span>
+       </button><button class="track-card track-together" type="button" data-track-index="1" aria-pressed="false" aria-label="Come Together 선택">
+         <span class="track-no">02 / 03</span>
+         <span class="track-info"><span class="track-name">Come Together</span><span class="track-artist">Nox Vahn &amp; Marsh</span><span class="track-desc">서로 다른 생각을 나누다, 어느 순간 서로의 문을 열어주는 친구.</span></span>
+         <span class="track-select-mark" aria-hidden="true">↗</span>
+       </button><button class="track-card track-sun" type="button" data-track-index="2" aria-pressed="false" aria-label="Sun In Your Eyes 선택">
+         <span class="track-no">03 / 03</span>
+         <span class="track-info"><span class="track-name">Sun In Your Eyes</span><span class="track-artist">Above &amp; Beyond · Marsh Remix</span><span class="track-desc">아직 만나지 않은 장면들, 그리고 아이들에게 보여줄 더 넓은 세상.</span></span>
+         <span class="track-select-mark" aria-hidden="true">↗</span>
+       </button>
+          </div>
+        </div>
+        <div class="playlist-player-side">
+          <div class="player-header">
+             <span class="onair"><span class="onair-dot" aria-hidden="true"></span> YOUR LISTENING ROOM</span>
+             <span class="player-side-number">SIDE A — CHARLIE TO PATRICK</span>
+          </div>
+          <div class="player-video-frame">
+             <iframe data-youtube-frame title="Marsh의 Home 공식 YouTube 영상 플레이어" src="https://www.youtube-nocookie.com/embed/gzN4IyECkHk?playsinline=1&amp;controls=1&amp;rel=0&amp;playlist=wULG18MXKz4%2C5LHR-gp4Sts" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <div class="player-now"><div><span class="now-label">SELECTED TRACK</span><div class="now-title" data-now-title>Home</div><div class="now-subtitle" data-now-artist>Marsh</div></div><div class="play-vinyl" aria-hidden="true"><span></span></div></div>
+          <p class="player-live-status" data-player-status role="status" aria-live="polite">영상 안의 ▶를 누르면 음악이 시작돼.</p>
+          <div class="player-links">
+            <a data-source-link href="https://www.youtube.com/watch?v=gzN4IyECkHk" target="_blank" rel="noopener noreferrer">YouTube에서 듣기 ↗</a>
+            <a data-work-link href="listen.html" target="_blank" rel="noopener noreferrer">일할 때 듣는 플레이어 열기 ↗</a>
+          </div>
+          <p class="player-note">공식 YouTube 플레이어를 사용해. 브라우저에서 소리 재생은 직접 시작해야 할 수 있고, 광고나 재생 제한이 발생할 수 있어.</p>
+        </div>
+      </div>
+    </div>
+        <div class="music-gift-footnote">GOOD MUSIC. GOOD COMPANY. NO BIG EXPLANATION NEEDED.</div>
+      </div>
+    </section>
+    <section class="section dark-panel" id="again" aria-labelledby="again-title">
+      <div class="wrap">
+        <div class="text-area scroll-appear">
+          <span class="section-index">02 / SAYING HELLO AGAIN</span>
+          <h2 id="again-title">그렇다고 우리가<br />늘 가까웠던 건<br />아니잖아.</h2>
+          <p>나는 사람 사이의 거리를 잘 몰랐던 때가 있었고, 우리도 한동안 안부가 뜸했지. 그렇다고 그 시간까지 없었던 일로 만들고 싶진 않아.</p>
+          <p>작년 여름 내가 먼저 인사했고, 우리는 다시 만나기 시작했어. 그때 연락하길 참 잘했다. 형이 바라던 ‘형 노릇보다 서로 깨닫게 해주는 친구’에 이제 조금 가까워진 것 같거든.</p>
+        </div>
+        <div class="line-timeline scroll-appear" aria-label="함께한 시간의 흐름">
+          <div class="timeline-item"><span class="time-meta">6–7 YEARS AGO</span><div class="time-text">서로 다른 세계를<br />처음 만난 시간</div></div>
+          <div class="timeline-item"><span class="time-meta">SUMMER 2025</span><div class="time-text">다시 먼저<br />안부를 건넨 계절</div></div>
+          <div class="timeline-item"><span class="time-meta">NOVEMBER 2026</span><div class="time-text">또 다른 이야기를<br />함께 쓰는 오늘</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="cinema-bridge" id="bridge" aria-labelledby="bridge-title">
+      <div class="wrap cinema-bridge-inner">
+        <div class="cinema-bridge-line" aria-hidden="true"><span></span></div>
+        <span class="bridge-meta">SUMMER 2025 — A SMALL HELLO</span>
+        <h2 id="bridge-title" class="bridge-heading">한 번 더 인사했더니,<br/><em>다음 이야기가 열렸어.</em></h2>
+        <p class="bridge-note">그래서 우리는 다시 이야기를 시작했고, 앞으로도 서로의 문을 열어주겠지.</p>
+        <div class="cinema-bridge-line bottom" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <section class="section" id="exchange" aria-labelledby="exchange-title">
+      <div class="wrap">
+        <div class="scroll-appear">
+          <span class="section-index">03 / WHAT WE GIVE EACH OTHER</span>
+          <h2 id="exchange-title">지금은 우리,<br />서로에게 할 말이<br />생겼네.</h2>
+        </div>
+        <div class="quote-layout">
+          <div class="quote-block scroll-appear"><div class="symbol" aria-hidden="true">↗</div><h3>형에게서<br />배운 것들.</h3><p>새로운 취향을 즐기는 법, 사람 사이의 선, 좋아하는 사람에게 경험과 시간을 쓰는 태도. 그때는 잘 몰랐어도 시간이 지나니 하나씩 남더라.</p></div>
+          <div class="quote-block scroll-appear"><div class="symbol" aria-hidden="true">↙</div><h3>이번엔 내가<br />건넨 한마디.</h3><p>마음의 온기는 말뿐 아니라 손길이나 행동으로도 전해진다는 얘기. 형이 도움이 됐다고 말해줘서 나도 고마웠어. 형수님도 비슷한 이야기를 했다고 하니 더 반가웠고. 이제는 우리가 서로에게 배울 수 있네.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="section nextgen" id="next-chapter" aria-labelledby="next-title">
+      <div class="wrap center-line scroll-appear">
+        <span class="section-index">04 / TWO FATHERS, THE NEXT WORLD</span>
+        <h2 id="next-title">아빠 노릇은<br />아직 잘 모르겠어.<br />그래도 같이 가자.</h2>
+        <p>얼마 전 형 피로연에서 함께 웃다가 문득 생각했어. 형은 아들과, 나는 곧 딸과 또 처음 겪는 시간을 보내겠구나.</p>
+        <p>우리가 모든 답을 알 리는 없지. 그래도 아이들에겐 세상이 꽤 넓고, 자기가 열어볼 문도 많다는 걸 알려주는 아빠들이면 좋겠어.</p>
+        <p>모르는 건 물어보고, 실수하면 웃기도 하고. 육아 얘기하다가 또 맛있는 거 먹으러 가고. 그렇게 해보자. ㅋㅋ</p>
+        <div class="nextgen-art" aria-label="형과 아들, 나와 딸이 이어갈 시간">
+          <div class="nextgen-circle"><div><span class="person">PATRICK</span><span class="kid">WITH HIS SON</span></div></div>
+          <div class="connecting" aria-hidden="true"><span>✦</span></div>
+          <div class="nextgen-circle"><div><span class="person">CHARLIE</span><span class="kid">WITH HIS DAUGHTER</span></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="letter-section" id="letter" aria-labelledby="letter-header">
+      <div class="wrap">
+        <div class="letter-shell">
+          <details class="letter" id="letterDetails">
+            <summary>
+              <span class="letter-meta">ONE LAST THING, FRIEND</span>
+              <div class="letter-summary-title" id="letter-header">형이라 부르는<br />친구에게.</div>
+              <div class="letter-summary-desc">생일이니까. 미뤄둔 말도 좀 해보려고.</div>
+              <span class="letter-open-action"><span class="plus" aria-hidden="true">+</span><span>편지 열어보기</span></span>
+            </summary>
+            <div class="letter-body">
+              <p id="letterText">재원이형, 생일 축하해. ㅎㅎ
+
+11월 들어 아침 공기가 꽤 차가워졌더라.
+형 생일이라고 생각하니 우리가 처음 만났던 20대 후반부터 떠올랐어.
+
+형이 들려준 음악, 맛있는 걸 찾아 떠났던 여행, 사람 사이의 선.
+그 시절 내게 형은 Preacher 같은 사람이었어.
+무언가를 가르쳤다기보다 “이런 세계도 있어” 하고 보여준 사람.
+
+그런데 나도 그때는 참 서툴렀지.
+관계에서 거리를 잘 몰랐고, 선을 넘나들기도 했잖아.
+형은 자신의 기준이 분명했고, 마음이 맞는 사람에게 시간과 경험을 나누는 사람이었고.
+시간이 지나서야 그 차이를 조금씩 이해하게 됐어.
+
+우리도 늘 가까웠던 건 아니었지.
+한동안 안부가 뜸했던 시간도 있었으니까.
+그래서인지 작년 여름 내가 먼저 인사했던 날이 더 또렷하게 남아.
+그때 연락하길 참 잘했다.
+
+형이 예전에 그랬잖아.
+형 노릇을 하기보다 친구가 되어 서로 뭔가를 깨닫게 해주는 사이가 되고 싶다고.
+
+얼마 전 내가 ‘마음의 온기는 행동과 손길로도 전해진다’고 얘기했을 때, 형한테 도움이 됐다는 말이 참 고마웠어.
+형수님도 비슷한 이야기를 했다고 하니 더 반가웠고.
+예전에는 내가 형에게 많이 배웠다면, 이제는 나도 형에게 무언가 건넬 수 있는 친구가 되어가나 싶었어.
+
+이제 형은 아들과, 나는 곧 딸과 새로운 시간을 보내게 되네.
+우리가 육아에 대해 얼마나 알겠어. 모르는 게 더 많겠지. ㅋㅋ
+그러니까 앞으로도 배우고, 부딪히고, 실수한 얘기도 나누자.
+아이들에겐 정답을 대신 정해주는 아빠보다, 넓은 세상을 함께 구경해주는 아빠들이 되면 좋겠어.
+
+형, 생일 진심으로 축하해.
+올해도 좋은 음악 듣고, 맛있는 것 먹으러 가고, 가끔은 서로의 생각을 흔들어주자.
+
+형이라고 부르지만, 친구라서 더 좋은 사람.
+고맙다, 재원이형.</p>
+              <p class="signature">— 규현, Charlie.</p>
+              <div class="letter-actions">
+                <button type="button" class="copy-button" id="copyLetter">편지 내용 복사하기</button>
+                <span id="copyStatus" class="copy-status" role="status" aria-live="polite"></span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <aside class="maker-note" aria-label="작은 제작 후기">
+    <div class="wrap">
+      <details class="maker-disclosure"><summary>이 선물을 만든 이유 <span aria-hidden="true">+</span></summary>
+      <p>형, 요즘 내가 어떤 일을 하는지 보여주고 싶기도 했어. 근데 그냥 작업물을 보내는 건 좀 재미없잖아. ㅎㅎ 우리가 나눈 시간들을 직접 열고, 보고, 들을 수 있는 공간으로 만들어봤어. 이 페이지의 주인공은 기술보다 형이니까.</p>
+      <small>Made with time, code, and a lot of thought · Charlie</small>
+      </details>
+    </div>
+  </aside>
+  <footer class="finale">
+    <div class="wrap">
+      <div class="eyebrow">TO JAEWON / FROM CHARLIE</div>
+      <h2>Happy birthday,<br /><em>재원이형.</em></h2>
+      <p>형, 이번에도 같이 웃자.<br />우리가 처음 겪을 날들이 아직 많으니까.</p>
+      <div class="endnote"><span>ONE MORE YEAR. MANY MORE DOORS.</span><span>2026. 11. 02</span></div>
+    </div>
+  </footer>
+
+  <!-- GSAP is enhancement only; the page remains readable without an external script. -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script>
+    (function(){
+      'use strict';
+      const door = document.getElementById('doorButton');
+      const hint = document.getElementById('doorHint');
+      // The door opens the story; music is a separate choice in the visible, official player.
+      door.addEventListener('click', function(){
+        const opened = door.getAttribute('aria-expanded') !== 'true';
+        door.setAttribute('aria-expanded', String(opened));
+        door.setAttribute('aria-label', opened ? '생일 축하 메시지의 문 닫기' : '생일 축하 메시지의 문 열기');
+        hint.textContent = opened ? 'HAPPY BIRTHDAY, FRIEND.' : 'TAP TO OPEN THE NEXT DOOR';
+      });
+      const meter = document.getElementById('progress');
+      let ticking = false;
+      function updateMeter(){
+        const max = Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+        const ratio = Math.min(1,Math.max(0,window.scrollY/max));
+        meter.style.width = (ratio*100).toFixed(2)+'%';
+        ticking = false;
+      }
+      window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(updateMeter)}},{passive:true});
+      window.addEventListener('resize',updateMeter);
+      updateMeter();
+      const reveals = document.querySelectorAll('.scroll-appear');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const heroFilm = document.getElementById('heroFilm');
+      if(reducedMotion){try{heroFilm.pause()}catch(e){};reveals.forEach(el=>el.classList.add('visible'))}
+      else if(window.gsap && window.ScrollTrigger){
+        gsap.registerPlugin(ScrollTrigger);
+        // Small choreography, no scroll-jacking or text/video competition.
+        gsap.from('.hero .eyebrow',{autoAlpha:0,y:15,duration:.55,ease:'power2.out'});
+        gsap.from('.hero h1',{autoAlpha:0,y:23,duration:1.02,delay:.14,ease:'power3.out'});
+        gsap.from('.hero-intro',{autoAlpha:0,y:14,duration:.72,delay:.58,ease:'power2.out'});
+        gsap.from('.hero-art',{autoAlpha:0,scale:.96,duration:1.2,delay:.25,ease:'power2.out'});
+        // Defer scroll reveal setup until after initial style pass to prevent flashes.
+        reveals.forEach(el=>{
+          el.classList.remove('scroll-appear');
+          gsap.fromTo(el,{autoAlpha:0,y:29},{autoAlpha:1,y:0,duration:.95,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 91%',once:true}});
+        });
+        gsap.fromTo('.bridge-heading',{autoAlpha:0,y:37},{autoAlpha:1,y:0,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.cinema-bridge',start:'top 80%',once:true}});
+        gsap.fromTo('.bridge-note',{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:.75,scrollTrigger:{trigger:'.bridge-note',start:'top 92%',once:true}});
+        gsap.to('.cinema-bridge-line span',{xPercent:390,duration:2.15,ease:'power2.inOut',scrollTrigger:{trigger:'.cinema-bridge',start:'top 70%',once:true}});
+        // Video changes slightly as the user leaves the opening, a deliberate visual transition.
+        gsap.to('.hero-film',{opacity:.5,scale:1.08,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.6}});
+        door.addEventListener('click',function(){gsap.fromTo('.art-caption',{autoAlpha:.45,y:5},{autoAlpha:1,y:0,duration:.7,ease:'power2.out'})});
+      }else if('IntersectionObserver' in window){
+        const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:.12,rootMargin:'0px 0px -15px 0px'});
+        reveals.forEach(el=>observer.observe(el));
+      }else{reveals.forEach(el=>el.classList.add('visible'))}
+      const copyButton = document.getElementById('copyLetter');
+      const copyStatus = document.getElementById('copyStatus');
+      copyButton.addEventListener('click',async function(){
+        const body = document.getElementById('letterText').innerText + '\n\n— 규현, Charlie.';
+        try{
+          if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(body)}
+          else{
+            const temp=document.createElement('textarea');temp.value=body;temp.style.cssText='position:fixed;left:-9999px;top:0';document.body.appendChild(temp);temp.select();
+            const ok=document.execCommand('copy');temp.remove();if(!ok)throw new Error('copy not supported');
+          }
+          copyStatus.textContent='편지를 복사했어요.';
+        }catch(error){copyStatus.textContent='복사가 제한된 환경입니다. 편지 글을 직접 선택해 주세요.'}
+      });
+    })();
+  </script>
+</body>
+</html>
