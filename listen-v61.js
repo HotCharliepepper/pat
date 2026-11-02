@@ -46,17 +46,17 @@
     external.href=sourceUrl(t);
     fallbackExternal.href=sourceUrl(t);
     if(player && typeof player.loadVideoById==='function' && playingRequested){
-      try{player.loadVideoById(t.id);visible('video');setStatus('새 곡을 골랐어. 재생되지 않으면 영상의 ▶를 눌러줘.');return;}catch(e){}
+      try{player.loadVideoById(t.id);visible('video');setStatus('다른 곡 골랐네. 음악이 안 나오면 영상의 ▶를 눌러줘.');return;}catch(e){}
     }
     clearPlayer();playingRequested=false;visible('cover');
-    setStatus('선택한 곡을 듣고 싶으면 ‘이 곡 듣기’를 눌러줘.');
+    setStatus('듣고 싶은 곡을 골랐다면 ‘이 곡 듣기’를 눌러줘.');
     if(start) startPlayer();
   }
   function showFallback(message){
     clearPlayer();
     visible('fallback');
     $('[data-fallback-description]').textContent=message;
-    setStatus('재생 환경 때문에 막혔어. YouTube에서 바로 들을 수 있어.');
+    setStatus('여기선 음악이 안 나오네. YouTube에서 바로 들어줘.');
   }
   function getAPI(){
     if(window.YT && typeof window.YT.Player==='function')return Promise.resolve(window.YT);
@@ -77,12 +77,12 @@
   }
   async function startPlayer(){
     if(location.protocol!=='https:' && location.hostname!=='localhost' && location.hostname!=='127.0.0.1'){
-      showFallback('이 미리보기에서는 YouTube가 사이트 주소를 확인할 수 없어. HTTPS로 배포하거나 YouTube에서 직접 들어줘.');
+      showFallback('미리보기에서는 음악이 막힐 수 있어. YouTube에서 바로 들어줘.');
       return;
     }
     const myToken=++loadToken;
     playingRequested=true;
-    setStatus('공식 YouTube 플레이어를 불러오는 중이야…');
+    setStatus('음악 불러오는 중…');
     // Keep attractive cover visible until provider is ready; never flash an error iframe on arrival.
     try{
       const YT=await getAPI();
@@ -98,18 +98,18 @@
           onReady:()=>{
             if(myToken!==loadToken)return;
             visible('video');
-            setStatus('음악이 시작되지 않았다면 영상 안의 ▶를 눌러줘.');
+            setStatus('음악이 안 나오면 영상 안의 ▶를 눌러줘.');
             try{player.playVideo();}catch(e){}
           },
           onError:(event)=>{
             if(myToken!==loadToken)return;
             const code=event&&event.data;
-            if(code===153)showFallback('영상 연결 정보가 전달되지 않았어(오류 153). 아래 버튼으로 공식 YouTube에서 바로 들을 수 있어.');
-            else showFallback('이 영상은 현재 페이지 안에서 재생할 수 없어. 공식 YouTube에서 이어서 들어줘.');
+            if(code===153)showFallback('이 브라우저에선 YouTube 연결이 막혔어(오류 153). 아래 링크로 들어줘.');
+            else showFallback('이 페이지에선 재생이 안 되네. YouTube에서 이어 들어줘.');
           },
           onStateChange:(event)=>{
             if(myToken!==loadToken)return;
-            if(event.data===YT.PlayerState.PLAYING)setStatus('지금 재생 중 · 좋은 음악 듣자.');
+            if(event.data===YT.PlayerState.PLAYING)setStatus('재생 중이야. 좋은 음악 듣자.');
             if(event.data===YT.PlayerState.ENDED){
               // Continue the chosen three-song sequence where provider permits.
               const next=(selected+1)%tracks.length;
@@ -120,7 +120,7 @@
       });
     }catch(error){
       if(myToken!==loadToken)return;
-      showFallback('이 브라우저에서 플레이어를 불러오지 못했어. 공식 YouTube에서 바로 열어줘.');
+      showFallback('여기선 플레이어가 안 열리네. YouTube에서 바로 들어줘.');
     }
   }
   cards.forEach(card=>card.addEventListener('click',()=>{
@@ -131,7 +131,7 @@
     }
   }));
   $('[data-play-button]').addEventListener('click',startPlayer);
-  $('[data-retry-button]').addEventListener('click',()=>{clearPlayer();visible('cover');setStatus('다시 시도할 준비가 됐어.');startPlayer();});
+  $('[data-retry-button]').addEventListener('click',()=>{clearPlayer();visible('cover');setStatus('한 번 더 열어볼게.');startPlayer();});
   $('[data-previous]').addEventListener('click',()=>updateTrack((selected+tracks.length-1)%tracks.length,{start:playingRequested}));
   $('[data-next]').addEventListener('click',()=>updateTrack((selected+1)%tracks.length,{start:playingRequested}));
   updateTrack(0);

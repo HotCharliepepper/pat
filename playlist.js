@@ -44,7 +44,7 @@
         const visible=Math.max(0,Math.min(window.innerHeight,rect.bottom)-Math.max(0,rect.top));
         const canTryPlay=rect.height>0 && (visible/rect.height)>0.55;
         frame.src=playerURL(i,canTryPlay);
-        status.textContent='\u201c'+t.name+'\u201d을 골랐어. '+(canTryPlay ? '재생되지 않으면 영상 안의 ▶를 눌러줘.' : '영상 안의 ▶를 누르면 음악이 시작돼.');
+        status.textContent='\u201c'+t.name+'\u201d을 골랐어. '+(canTryPlay ? '음악이 안 나오면 영상 안의 ▶를 눌러줘.' : '영상 안의 ▶를 눌러줘.');
         if (window.innerWidth < 871) {
           const playerStage=root.querySelector('.player-video-frame');
           playerStage.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'center'});
@@ -56,7 +56,7 @@
         if(link.getAttribute('href') === 'listen.html'){
           // When the dedicated player is opened, avoid two overlapping streams.
           frame.src=playerURL(active,false);
-          status.textContent='작업용 플레이어를 새 탭에서 열었어. 거기서 재생해 줘.';
+          status.textContent='음악방을 새 탭에서 열었어. 거기서 편하게 들어.';
         }
       });
     });
