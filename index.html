@@ -246,12 +246,76 @@
     }
     @media(prefers-reduced-motion:reduce){.hero-film{display:none!important}.cinema-bridge-line span{transform:none!important}}
     @media print{.hero-film,.hero-film-wash,.cinema-bridge{display:none!important}}
+
+    /* V6.3: a gentle opening ritual. Both choices remain accessible. */
+    .sound-invite{width:min(465px,calc(100% - 36px));max-height:min(92dvh,780px);padding:0;border:1px solid rgba(223,185,138,.5);background:#152a33;color:#fff9ec;box-shadow:0 35px 110px rgba(0,8,13,.52);overflow-y:auto}
+    .sound-invite::backdrop{background:rgba(5,17,24,.84);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .sound-invite-inner{padding:clamp(27px,6vw,45px);text-align:left}
+    .invite-icon{display:grid;place-items:center;width:70px;height:70px;border:1px solid rgba(226,182,137,.5);border-radius:50%;color:#e6bc91;margin-bottom:29px}
+    .invite-kicker{font-size:9px;letter-spacing:.17em;color:#d6b08e;margin-bottom:18px}
+    .sound-invite h2{font:400 clamp(27px,7vw,39px)/1.48 var(--serif);letter-spacing:-.055em;margin:0 0 23px}
+    .sound-invite h2 em{color:#e7bc8a;font-style:normal}
+    .invite-copy{font:400 clamp(14px,3.5vw,17px)/1.98 var(--serif);color:#e7ddd0;margin-bottom:26px}
+    .invite-actions{display:flex;flex-direction:column;gap:9px}
+    .invite-actions button{min-height:49px;padding:12px 18px;border:1px solid rgba(233,193,155,.6);cursor:pointer;text-align:center;transition:background .2s,color .2s}
+    .invite-primary{display:flex;justify-content:space-between;align-items:center;background:#e5b98e;color:#182c33;font-weight:600}
+    .invite-primary:hover{background:#f4d1aa}
+    .invite-secondary{background:transparent;color:#f0dcc5}
+    .invite-secondary:hover{background:rgba(255,255,255,.1)}
+    .invite-help{font:400 11px/1.8 var(--serif);color:#aaa9a3;margin:19px 0 0}
+    .sound-invite-reopen{display:block;background:none;color:#e8c49d;border:0;border-bottom:1px solid rgba(230,186,140,.42);padding:3px 0 5px;margin:13px 0 0;font-size:11px;cursor:pointer;text-align:left}
+    .sound-invite-reopen:hover{color:#fff;border-color:#fff}
+    .nextgen h2 em{color:var(--terracotta);font-style:normal}
+    @media(max-width:600px){
+      .hero-intro br,.music-gift-heading p br,.music-gift-heading h2 br,.bridge-heading br,.section h2 br{display:none}
+      .hero-intro{line-height:1.88;font-size:15px;max-width:33ch}
+      .section h2{font-size:clamp(30px,8.5vw,42px);line-height:1.52}
+      .section p{font-size:15px;line-height:2;letter-spacing:-.015em}
+      .center-line{text-align:left}
+      .nextgen h2{max-width:13ch}
+      .nextgen-art{text-align:center;max-width:350px;margin-left:auto;margin-right:auto}
+      .nextgen-circle .person{font-size:clamp(15px,5vw,22px)}
+      .nextgen-circle .kid{font-size:9px;letter-spacing:.06em}
+      .line-timeline{grid-template-columns:1fr;border-top:none;border-left:1px solid rgba(255,255,255,.23);margin-left:5px;gap:0}
+      .timeline-item{padding:0 0 29px 23px}
+      .timeline-item::before{top:8px;left:-5px}
+      .time-text br{display:none}
+      .letter-body p{font-size:16px;line-height:2.03;letter-spacing:-.018em}
+      .letter-body{padding:0 26px 42px}
+      details.letter summary{padding:38px 26px}
+      .letter-summary-desc{font-size:13px;line-height:1.85}
+      .cinema-bridge-inner{padding:94px 0 98px}
+      .bridge-heading{line-height:1.55}
+    }
+    @media(max-width:370px){
+      .sound-invite-inner{padding:23px}
+      .invite-copy{font-size:14px}
+      .letter-body{padding:0 19px 36px}
+      details.letter summary{padding:29px 19px}
+      .nextgen-art{grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:4px}
+    }
+    @media print{.sound-invite,.sound-invite-reopen{display:none!important}}
   </style>
   <link rel="stylesheet" href="playlist.css" />
+  <script src="track-catalog.js" defer></script>
   <script src="playlist.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 이동</a>
+  <dialog id="soundInvite" class="sound-invite" aria-labelledby="soundInviteTitle" aria-describedby="soundInviteDesc">
+    <div class="sound-invite-inner">
+      <div class="invite-icon" aria-hidden="true"><svg viewBox="0 0 56 56" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"><path d="M10 31v-3a18 18 0 0 1 36 0v3"/><rect x="6" y="29" width="11" height="17" rx="5"/><rect x="39" y="29" width="11" height="17" rx="5"/><path d="M45 46c-2 6-10 7-17 7"/></svg></div>
+      <p class="invite-kicker">BEFORE YOU STEP IN · A NOTE FOR PATRICK</p>
+      <h2 id="soundInviteTitle">형, 시작하기 전에<br> <em>이어폰 한번 껴 봐.</em></h2>
+      <p class="invite-copy" id="soundInviteDesc">블루투스 스피커에 연결해도 좋고.<br> 좋아할 만한 곡 세 개 골라놨어.<br> 음악 틀고 천천히 봐. ㅎㅎ</p>
+      <div class="invite-actions">
+        <button type="button" class="invite-primary" data-invite="music">음악부터 골라볼게 <span aria-hidden="true">↗</span></button>
+        <button type="button" class="invite-secondary" data-invite="story">편지부터 읽어볼게</button>
+      </div>
+      <p class="invite-help">이어폰이나 스피커는 기기에서 연결해 줘.<br> 음악은 곡을 고른 뒤 재생하면 돼.</p>
+    </div>
+  </dialog>
+
   <div class="page-meter" aria-hidden="true"><span id="progress"></span></div>
   <header class="hero cinematic" id="top">
     <!-- Original abstract atmosphere loop. Replace with footage you have permission to publish. -->
@@ -264,15 +328,16 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <div class="eyebrow">NOVEMBER 02 · FOR A FRIEND</div>
-          <h1>우리 참,<br />멀리도 왔다.<br /><em>생일 축하해.</em></h1>
-          <p class="hero-intro">음악 듣고, 맛있는 거 찾아다녔던 날들.<br />오랜만에 다시 연락했던 작년 여름까지.<br />형 생일이라 우리 얘기를 좀 꺼내봤어.</p>
-          <a class="scroll-cta" href="#main"><span>우리의 이야기 읽기</span><span class="arrow" aria-hidden="true">↘</span></a>
+          <h1>우리 참,<br /> 멀리도 왔다.<br /> <em>생일 축하해.</em></h1>
+          <p class="hero-intro">음악 듣고, 맛있는 거 찾아다녔던 날들.<br /> 오랜만에 다시 연락했던 작년 여름까지.<br /> 오늘 형 생일이니까, 우리 얘기를 좀 해보고 싶었어.</p>
+          <a class="scroll-cta" href="#main"><span>우리 이야기 읽어볼래?</span><span class="arrow" aria-hidden="true">↘</span></a>
           <p class="micro"><span class="hint-desktop">형, 오른쪽 문도 한번 열어봐. ㅎㅎ</span><span class="hint-mobile">형, 아래 문도 한번 열어봐. ㅎㅎ</span></p>
+          <button type="button" class="sound-invite-reopen" id="soundInviteReopen">이어폰·스피커 안내 다시 보기 ↗</button>
         </div>
         <div class="hero-art">
           <div class="orbit" aria-hidden="true"></div>
           <button type="button" id="doorButton" class="door-control" aria-label="생일 축하 메시지의 문 열기" aria-expanded="false">
-            <span class="door-frame"><span class="door-light"><span>재원이형,<br />생일 축하해!</span></span></span>
+            <span class="door-frame"><span class="door-light"><span>재원이형,<br /> 생일 축하해!</span></span></span>
             <span class="door-leaf" aria-hidden="true"></span>
           </button>
           <div class="art-caption" id="doorHint">TAP TO OPEN THE NEXT DOOR</div>
@@ -285,13 +350,13 @@
       <div class="wrap split">
         <div class="text-area scroll-appear">
           <span class="section-index">01 / THE FIRST DOOR</span>
-          <h2 id="first-title">처음엔 형이<br />내 세상을<br />넓혀줬지.</h2>
+          <h2 id="first-title">형 덕분에<br /> 처음 알게 된<br /> 것들이 참 많아.</h2>
           <p>형이 들려준 음악, 맛있는 걸 찾아 떠난 여행, 사람 사이에 지키던 선. 처음엔 낯선 것도 많았는데 재밌었어.</p>
-          <p>형이 정답을 알려주려고 했던 건 아니겠지. 그래도 나는 형 덕분에 몰랐던 세상을 많이 봤어. 그래서 내겐 <em>Preacher</em> 같은 사람이었나 봐. ㅎㅎ</p>
+          <p>형이 뭘 가르치려던 건 아니었겠지. 근데 나는 형 덕분에 모르던 세상을 많이 봤어. 그래서 그때 내겐 <em>Preacher</em> 같은 사람이었나 봐. ㅎㅎ</p>
           <div class="little-words" aria-label="함께 나눴던 주제들"><span>MUSIC</span><span>FOOD & TRAVEL</span><span>BOUNDARIES</span></div>
         </div>
         <div class="art-side scroll-appear">
-          <div class="record-stage" aria-hidden="true"><div class="vinyl"><div class="vinyl-label">THE<br/>FIRST<br/>DOOR</div></div></div>
+          <div class="record-stage" aria-hidden="true"><div class="vinyl"><div class="vinyl-label">THE<br/> FIRST<br/> DOOR</div></div></div>
           <p class="side-note">Some people change the way we listen.</p>
         </div>
       </div>
@@ -299,8 +364,8 @@
     <section class="music-gift-section" id="soundtrack" aria-labelledby="soundtrack-title">
       <div class="wrap">
         <div class="music-gift-heading scroll-appear"><span class="section-index">01.5 / THREE SONGS FOR A FRIEND</span>
-        <h2 id="soundtrack-title">형, 이번엔<br /><em>내가 골라본</em> 세 곡.</h2>
-        <p>형이 예전에 좋은 음악 많이 들려줬잖아.<br />이번엔 내가 세 곡 골라봤어.<br />편지 읽으면서 들어도, 일할 때 틀어둬도 좋아.</p>
+        <h2 id="soundtrack-title">형, 이번엔<br /> <em>내가 골라본</em> 세 곡.</h2>
+        <p>형이 예전에 좋은 음악 많이 들려줬잖아.<br /> 이번엔 내가 세 곡 골라봤어.<br /> 들으면서 편지 읽어도 좋고, 일할 때 틀어둬도 좋아.</p>
         </div>
         <div class="playlist-root" data-playlist-root>
       <div class="playlist-grid">
@@ -328,13 +393,13 @@
              <span class="player-side-number">SIDE A — CHARLIE TO PATRICK</span>
           </div>
           <div class="player-video-frame">
-             <iframe data-youtube-frame title="Marsh의 Home 공식 YouTube 영상 플레이어" src="https://www.youtube-nocookie.com/embed/gzN4IyECkHk?playsinline=1&amp;controls=1&amp;rel=0&amp;playlist=wULG18MXKz4%2C5LHR-gp4Sts" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+             <iframe data-youtube-frame title="Marsh의 Home 공식 YouTube 영상 플레이어" src="https://www.youtube-nocookie.com/embed/gzN4IyECkHk?playsinline=1&amp;controls=1&amp;rel=0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
           </div>
           <div class="player-now"><div><span class="now-label">SELECTED TRACK</span><div class="now-title" data-now-title>Home</div><div class="now-subtitle" data-now-artist>Marsh</div></div><div class="play-vinyl" aria-hidden="true"><span></span></div></div>
           <p class="player-live-status" data-player-status role="status" aria-live="polite">영상 안의 ▶를 누르면 음악이 시작돼.</p>
           <div class="player-links">
             <a data-source-link href="https://www.youtube.com/watch?v=gzN4IyECkHk" target="_blank" rel="noopener noreferrer">YouTube에서 듣기 ↗</a>
-            <a data-work-link href="listen.html" target="_blank" rel="noopener noreferrer">일할 때 듣는 플레이어 열기 ↗</a>
+            <a data-work-link href="listen.html" target="_blank" rel="noopener noreferrer">음악방 따로 열기 ↗</a>
           </div>
           <p class="player-note">영상이 안 열릴 수도 있어. 그럴 땐 ‘YouTube에서 듣기’를 눌러줘.</p>
         </div>
@@ -347,14 +412,14 @@
       <div class="wrap">
         <div class="text-area scroll-appear">
           <span class="section-index">02 / SAYING HELLO AGAIN</span>
-          <h2 id="again-title">우리가 늘<br />가까웠던 건<br />아니지.</h2>
-          <p>한때는 내가 사람 사이의 거리를 잘 몰랐어. 우리도 한동안 연락이 뜸했지. 그 시간까지 없던 일처럼 하고 싶진 않아.</p>
-          <p>작년 여름 내가 먼저 연락했고, 우린 다시 만나기 시작했어. 그때 연락하길 참 잘했다. 형이 예전에 말했던 ‘서로 뭔가 깨닫게 해주는 친구’에 우리도 조금 가까워진 것 같아서.</p>
+          <h2 id="again-title">우리가 늘<br /> 가까웠던 건<br /> 아니지.</h2>
+          <p>그때는 내가 사람 사이의 거리를 잘 몰랐어. 우리도 한동안 연락이 뜸했지. 지금 생각하면 좀 아쉬워.</p>
+          <p>작년 여름에 내가 먼저 연락했잖아. 그 뒤로 다시 만나게 됐고. 그때 연락하길 참 잘했어. 형이 말하던, 서로한테 배울 게 있는 친구 사이가 조금씩 되어가는 것 같거든.</p>
         </div>
         <div class="line-timeline scroll-appear" aria-label="함께한 시간의 흐름">
-          <div class="timeline-item"><span class="time-meta">6–7 YEARS AGO</span><div class="time-text">서로 다른 세계를<br />처음 만난 시간</div></div>
-          <div class="timeline-item"><span class="time-meta">SUMMER 2025</span><div class="time-text">오랜만에<br />안부를 건넨 여름</div></div>
-          <div class="timeline-item"><span class="time-meta">NOVEMBER 2026</span><div class="time-text">형 생일을<br />축하하는 오늘</div></div>
+          <div class="timeline-item"><span class="time-meta">6–7 YEARS AGO</span><div class="time-text">서로 다른 세계를<br /> 처음 만난 시간</div></div>
+          <div class="timeline-item"><span class="time-meta">SUMMER 2025</span><div class="time-text">오랜만에<br /> 안부를 건넨 여름</div></div>
+          <div class="timeline-item"><span class="time-meta">NOVEMBER 2026</span><div class="time-text">형 생일을<br /> 축하하는 오늘</div></div>
         </div>
       </div>
     </section>
@@ -362,7 +427,7 @@
       <div class="wrap cinema-bridge-inner">
         <div class="cinema-bridge-line" aria-hidden="true"><span></span></div>
         <span class="bridge-meta">SUMMER 2025 — A SMALL HELLO</span>
-        <h2 id="bridge-title" class="bridge-heading">다시 만나니까,<br/><em>할 얘기가 많더라.</em></h2>
+        <h2 id="bridge-title" class="bridge-heading">다시 만나니까,<br/> <em>할 얘기가 많더라.</em></h2>
         <p class="bridge-note">예전엔 형 얘기를 주로 듣던 내가, 요즘은 형한테 이런저런 얘기도 하네. ㅎㅎ</p>
         <div class="cinema-bridge-line bottom" aria-hidden="true"><span></span></div>
       </div>
@@ -371,21 +436,21 @@
       <div class="wrap">
         <div class="scroll-appear">
           <span class="section-index">03 / WHAT WE GIVE EACH OTHER</span>
-          <h2 id="exchange-title">지금은 우리,<br />서로에게 할 말이<br />생겼네.</h2>
+          <h2 id="exchange-title">요즘은 나도<br /> 형한테 해줄 얘기가<br /> 생겼어.</h2>
         </div>
         <div class="quote-layout">
-          <div class="quote-block scroll-appear"><div class="symbol" aria-hidden="true">↗</div><h3>형에게서<br />배운 것들.</h3><p>새로운 취향을 즐기는 법, 사람 사이의 선, 좋아하는 사람에게 시간과 경험을 나누는 태도. 그땐 몰랐는데 지금까지 꽤 남아 있더라.</p></div>
-          <div class="quote-block scroll-appear"><div class="symbol" aria-hidden="true">↙</div><h3>이번엔 내가<br />건넨 한마디.</h3><p>마음이 따뜻하다면 행동이나 손길로도 보여주면 좋겠다는 얘기. 형이 도움 됐다고 해줘서 나도 고마웠어. 형수님도 비슷한 말을 했다니 더 반가웠고.</p></div>
+          <div class="quote-block scroll-appear"><div class="symbol" aria-hidden="true">↗</div><h3>형에게서<br /> 배운 것들.</h3><p>새로운 취향을 즐기는 법, 사람 사이의 선, 좋아하는 사람에게 시간과 경험을 나누는 태도. 그땐 몰랐는데 지금까지 꽤 남아 있더라.</p></div>
+          <div class="quote-block scroll-appear"><div class="symbol" aria-hidden="true">↙</div><h3>이번엔 내가<br /> 건넨 한마디.</h3><p>좋아하는 마음은 말뿐 아니라 행동이나 손길로도 전하면 좋겠다는 얘기. 형이 도움 됐다고 하니까 나도 기뻤어. 형수님도 비슷한 말을 하셨다니 더 반가웠고.</p></div>
         </div>
       </div>
     </section>
     <section class="section nextgen" id="next-chapter" aria-labelledby="next-title">
       <div class="wrap center-line scroll-appear">
         <span class="section-index">04 / TWO FATHERS, THE NEXT WORLD</span>
-        <h2 id="next-title">아빠 노릇은<br />아직 잘 모르겠어.<br />그래도 같이 가자.</h2>
-        <p>얼마 전 형 피로연에서 같이 웃다가 생각했어. 형은 아들과, 나는 곧 딸과 처음 겪는 날들을 보내겠구나.</p>
-        <p>우리가 답을 다 알 리는 없지. 그래도 아이들이 자기만의 문을 열어볼 수 있게 응원하는 아빠들이면 좋겠어.</p>
-        <p>모르는 건 서로 묻고, 실수하면 웃고. 육아 얘기하다가 또 맛있는 거 먹으러 가고. 그렇게 해보자. ㅋㅋ</p>
+        <h2 id="next-title">이제 우리,<br /> 아빠 얘기도<br /> <em>같이 하겠네. ㅎㅎ</em></h2>
+        <p>얼마 전 형 피로연에서 같이 웃다가 문득 그런 생각이 들더라. 형은 아들, 나는 곧 딸. 우리도 이제 이런 얘길 하네. ㅎㅎ</p>
+        <p>우리도 모르는 게 많겠지. 그래도 아이들이 좋아하는 걸 하나씩 찾아갈 때, 옆에서 같이 신나 해주는 아빠들이면 좋겠어.</p>
+        <p>모르는 건 서로 물어보고, 웃긴 일 있으면 얘기하고. 그러다 시간 맞으면 또 맛있는 거 먹으러 가자. ㅋㅋ</p>
         <div class="nextgen-art" aria-label="형과 아들, 나와 딸이 이어갈 시간">
           <div class="nextgen-circle"><div><span class="person">PATRICK</span><span class="kid">WITH HIS SON</span></div></div>
           <div class="connecting" aria-hidden="true"><span>✦</span></div>
@@ -399,7 +464,7 @@
           <details class="letter" id="letterDetails">
             <summary>
               <span class="letter-meta">ONE LAST THING, FRIEND</span>
-              <div class="letter-summary-title" id="letter-header">형이라 부르는<br />친구에게.</div>
+              <div class="letter-summary-title" id="letter-header">형이라 부르는<br /> 친구에게.</div>
               <div class="letter-summary-desc">생일이니까, 평소엔 잘 안 했던 말도 좀 해보려고.</div>
               <span class="letter-open-action"><span class="plus" aria-hidden="true">+</span><span>편지 열어보기</span></span>
             </summary>
@@ -432,9 +497,9 @@
 
 얼마 전 형 피로연에서 같이 웃다가 생각했어.
 형은 아들과, 나는 곧 딸과 처음 겪는 날들을 보내겠구나.
-우리가 육아를 얼마나 알겠어. 모르는 게 더 많겠지. ㅋㅋ
-서로 물어보고, 실수한 얘기도 나누자.
-아이들한테 정답을 다 알려주려 하기보다, 세상이 얼마나 넓은지 함께 구경하는 아빠들이 되면 좋겠어.
+우리도 처음 겪는 게 참 많겠지. ㅋㅋ
+모르는 건 서로 물어보고, 웃긴 일 생기면 들려주자.
+아이들이 세상을 하나씩 알아갈 때 옆에서 같이 놀라고, 같이 웃는 아빠들이면 좋겠어.
 
 형, 생일 진심으로 축하해.
 올해도 좋은 음악 듣고 맛있는 거 먹으러 가자. 가끔은 서로의 생각도 흔들어주고.
@@ -463,8 +528,8 @@
   <footer class="finale">
     <div class="wrap">
       <div class="eyebrow">TO JAEWON / FROM CHARLIE</div>
-      <h2>Happy birthday,<br /><em>재원이형.</em></h2>
-      <p>형, 앞으로도 같이 웃자.<br />아직 처음 겪을 일들이 한참 남았잖아.</p>
+      <h2>Happy birthday,<br /> <em>재원이형.</em></h2>
+      <p>형, 앞으로도 좋은 음악 듣고, 많이 웃자.<br /> 우리 아직 같이 해볼 게 많잖아.</p>
       <div class="endnote"><span>ONE MORE YEAR. MANY MORE DOORS.</span><span>2026. 11. 02</span></div>
     </div>
   </footer>
@@ -475,6 +540,22 @@
   <script>
     (function(){
       'use strict';
+      // Sound invitation is an invitation, never a forced autoplay or Bluetooth permission prompt.
+      const soundInvite=document.getElementById('soundInvite');
+      const inviteKey='charliePatrickSoundInvite-v63';
+      const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      function markInviteSeen(){try{sessionStorage.setItem(inviteKey,'1')}catch(e){}}
+      function openSoundInvite(){if(!soundInvite.open && typeof soundInvite.showModal==='function')soundInvite.showModal();}
+      function closeSoundInvite(){markInviteSeen();if(soundInvite.open)soundInvite.close();}
+      document.querySelectorAll('[data-invite]').forEach(button=>button.addEventListener('click',()=>{
+        const destination=button.dataset.invite;
+        closeSoundInvite();
+        if(destination==='music')document.getElementById('soundtrack').scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+      }));
+      soundInvite.addEventListener('cancel',markInviteSeen);
+      document.getElementById('soundInviteReopen').addEventListener('click',openSoundInvite);
+      let seen=false;try{seen=sessionStorage.getItem(inviteKey)==='1'}catch(e){}
+      if(!seen)requestAnimationFrame(openSoundInvite);
       const door = document.getElementById('doorButton');
       const hint = document.getElementById('doorHint');
       // The door opens the story; music is a separate choice in the visible, official player.

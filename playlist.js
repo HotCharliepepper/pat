@@ -1,25 +1,18 @@
-/* One visible, unmodified official YouTube embed per page. No music files are hosted here. */
+/* JAEWON V6.3 — selected track = selected official YouTube video, no surprise next track. */
 (function(){
   'use strict';
-  const tracks = [
-    {name:'Home', artist:'Marsh', id:'gzN4IyECkHk'},
-    {name:'Come Together', artist:'Nox Vahn & Marsh', id:'wULG18MXKz4'},
-    {name:'Sun In Your Eyes (Marsh Remix)', artist:'Above & Beyond', id:'5LHR-gp4Sts'}
-  ];
-  function playerURL(index, shouldPlay){
-    const ids=tracks.map(t=>t.id);
-    const sequence=ids.slice(index).concat(ids.slice(0,index));
-    const url=new URL('https://www.youtube-nocookie.com/embed/'+sequence[0]);
-    url.searchParams.set('playlist',sequence.slice(1).join(','));
+  const tracks=window.JAEWON_TRACKS;
+  if(!Array.isArray(tracks)||tracks.length!==3)return;
+  function playerURL(track, shouldPlay){
+    const url=new URL('https://www.youtube-nocookie.com/embed/'+track.id);
     url.searchParams.set('controls','1');
     url.searchParams.set('playsinline','1');
     url.searchParams.set('rel','0');
-    // Loop through the set when the provider/browser supports it.
-    url.searchParams.set('loop','1');
-    if(shouldPlay) url.searchParams.set('autoplay','1');
+    // Deliberately omit `playlist`, `list`, `loop`: previous player mixed the next song into the selection.
+    if(shouldPlay)url.searchParams.set('autoplay','1');
     return url.toString();
   }
-  document.querySelectorAll('[data-playlist-root]').forEach(function(root){
+  document.querySelectorAll('[data-playlist-root]').forEach(root=>{
     const buttons=Array.from(root.querySelectorAll('[data-track-index]'));
     const frame=root.querySelector('[data-youtube-frame]');
     const title=root.querySelector('[data-now-title]');
@@ -27,38 +20,34 @@
     const source=root.querySelector('[data-source-link]');
     const status=root.querySelector('[data-player-status]');
     let active=0;
-    buttons.forEach(function(button){
-      button.addEventListener('click',function(){
-        const i=Number(button.dataset.trackIndex);
-        if(!Number.isInteger(i) || i<0 || i>=tracks.length) return;
-        active=i;
-        const t=tracks[i];
-        buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-        title.textContent=t.name;
-        artist.textContent=t.artist;
-        frame.title=t.artist+' — '+t.name+' 공식 YouTube 플레이어';
-        source.href='https://www.youtube.com/watch?v='+t.id;
-        // Never automatically play a YouTube embed that is out of view.
-        // A track selection can start it only when most of the visible player is on screen.
-        const rect=frame.getBoundingClientRect();
-        const visible=Math.max(0,Math.min(window.innerHeight,rect.bottom)-Math.max(0,rect.top));
-        const canTryPlay=rect.height>0 && (visible/rect.height)>0.55;
-        frame.src=playerURL(i,canTryPlay);
-        status.textContent='\u201c'+t.name+'\u201d을 골랐어. '+(canTryPlay ? '음악이 안 나오면 영상 안의 ▶를 눌러줘.' : '영상 안의 ▶를 눌러줘.');
-        if (window.innerWidth < 871) {
-          const playerStage=root.querySelector('.player-video-frame');
-          playerStage.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'center'});
-        }
-      });
-    });
-    root.querySelectorAll('[data-work-link]').forEach(function(link){
-      link.addEventListener('click',function(){
-        if(link.getAttribute('href') === 'listen.html'){
-          // When the dedicated player is opened, avoid two overlapping streams.
-          frame.src=playerURL(active,false);
-          status.textContent='음악방을 새 탭에서 열었어. 거기서 편하게 들어.';
-        }
-      });
-    });
+    function select(index,{start=false}={}){
+      if(!Number.isInteger(index)||index<0||index>=tracks.length)return;
+      active=index;
+      const track=tracks[index];
+      buttons.forEach(btn=>btn.setAttribute('aria-pressed',String(Number(btn.dataset.trackIndex)===index)));
+      title.textContent=track.title;
+      artist.textContent=track.artist;
+      source.href='https://www.youtube.com/watch?v='+track.id;
+      frame.title=track.artist+' — '+track.title+' 공식 YouTube 영상';
+      frame.src=playerURL(track,start);
+      status.textContent= '“'+track.title+'” 선택했어. 영상의 ▶를 눌러줘.';
+    }
+    buttons.forEach(btn=>btn.addEventListener('click',()=>{
+      const idx=Number(btn.dataset.trackIndex);
+      // The click is a direct gesture. Playback may still require pressing ▶ inside YouTube.
+      select(idx,{start:true});
+      if(window.matchMedia('(max-width:870px)').matches){
+        root.querySelector('.player-video-frame').scrollIntoView({
+          behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'center'
+        });
+      }
+    }));
+    root.querySelectorAll('[data-work-link]').forEach(link=>link.addEventListener('click',()=>{
+      // Stop the inline stream when the dedicated listening room opens.
+      select(active,{start:false});
+      status.textContent='음악방을 새 탭에서 열었어. 거기서 편하게 들어.';
+    }));
+    // The initial iframe is always exactly Home, never the next track in a playlist.
+    select(0,{start:false});
   });
 })();

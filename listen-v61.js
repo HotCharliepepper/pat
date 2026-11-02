@@ -1,11 +1,7 @@
 /* JAEWON V6.1 LISTEN — explicit play, referrer-aware YouTube API, resilient fallback */
 (() => {
   'use strict';
-  const tracks = [
-    {title:'Home',artist:'Marsh',id:'gzN4IyECkHk'},
-    {title:'Come Together',artist:'Nox Vahn & Marsh',id:'wULG18MXKz4'},
-    {title:'Sun In Your Eyes',artist:'Above & Beyond · Marsh Remix',id:'5LHR-gp4Sts'}
-  ];
+  const tracks = window.JAEWON_TRACKS;
   const $=s=>document.querySelector(s);
   const cards=Array.from(document.querySelectorAll('[data-track-index]'));
   const stage=$('[data-player-stage]');
